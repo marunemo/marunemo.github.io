@@ -31,11 +31,11 @@ background: '/img/posts/pixabay-ko-photos/어린이-손-카메라-4437568.jpg'
     큰 그림은 교내 학생들이 커뮤니티를 통해 고양이에 대한 글과 함께 고양이 사진을 올리고, 그 게시글을 통해 다른 사람들이 마음에 드는 고양이 사진을 저장할 수 있도록 하는 것이었다.
     거기에 더해 위키 형식으로 교내 고양이의 이름과 특징 등을 적어놓은 도감을 만들고, 도감으로 찾기 어려울 때에는 고양이의 얼굴 사진을 촬영하면 머신러닝으로 학습된 고양이의 얼굴 데이터로 가장 유사한 고양이를 출력하는 기능을 구현하는 것을 목표로 하였다.
 </p>
-<img src="../img/posts/hannyangmanyo/한냥만요_기능_및_서비스.jpg">
+<img src="/img/posts/hannyangmanyo/한냥만요_기능_및_서비스.jpg" width="100%">
 <p>
     교내에 "에브리타임"이라는 익명 커뮤니티 어플이 이미 존재한다는 점과 첫 개발 프로젝트인 만큼 완성도보다는 학습에 더 초점을 두었기 때문에, 커뮤니티 기능보다는 인공지능을 활용한 고양이 도감 기능을 구현하는 것을 우선시하였다.
 </p>
-<img src="../img/posts/hannyangmanyo/한냥만요_개발_목표.jpg">
+<img src="/img/posts/hannyangmanyo/한냥만요_개발_목표.jpg" width="100%">
 <p>
     안드로이드 스튜디오를 이용한 네이티브 앱으로 제작하고자 하였던 이유는 첫 개발이기에 각 언어나 프레임워크의 장점이나 단점 같은 것을 판단하기가 어려웠다.
     그래서 아이오닉과 같은 하이브리드 웹 앱이나 리액트 네이티브나 플러터 같은 크로스 플랫폼 어플을 만들기에는 너무 전반적인 지식이나 난도가 있으리라 생각되어, 가장 기본적인 형태인 네이티브 앱을 개발하기로 결정하였다.
@@ -44,7 +44,7 @@ background: '/img/posts/pixabay-ko-photos/어린이-손-카메라-4437568.jpg'
 </br>
 
 <h3>⛳ 개발 과정</h3>
-<img src="../img/posts/hannyangmanyo/한냥만요_개발_계획.png">
+<img src="/img/posts/hannyangmanyo/한냥만요_개발_계획.png" width="100%">
 <p>
     처음에는 우선 어플을 만들기 위한 기본 언어였던 java 문법에 익숙해지는 것이 먼저라고 생각했다.
     그래서 첫 주차에는 java의 기능에는 어떤 것들이 있는 지 각자 공부하였으나, 생각보다 진도가 나가질 않아 즉시 안드로이드 스튜디오로 실습을 해보기로 하였다.
@@ -55,24 +55,24 @@ background: '/img/posts/pixabay-ko-photos/어린이-손-카메라-4437568.jpg'
     그러나 Firebase의 요금 정책에 따르면, 게시글에 사용될 이미지의 용량 크기를 감당하기 어려울 것이라 생각했다.
     그래서 동아리 내의 서버 컴퓨터를 대여하여 그곳으로 대신 업로드하는 기능으로 대체하였다.
 </p>
-<img src="../img/posts/hannyangmanyo/한냥만요_플로우.jpg">
+<img src="/img/posts/hannyangmanyo/한냥만요_플로우.jpg" width="100%">
 <p>
     중간 즈음에 동아리 선배를 통해 머신러닝에 대한 개요를 듣고, handwritten digit classifier를 제작해보았다.
     머신러닝의 개요에서는 단층·다층 퍼셉트론과 gradient descent optimization 등에 대해서 배웠고,
     handwritten digit classifier는 pytorch를 활용해서 DNN과 CNN에 대해서 알아보았다.
     결론적으로, 우리가 최종적으로 구상한 그림은 다음과 같았다.
 </p>
-<img src="../img/posts/hannyangmanyo/한냥만요_플로우_그림.png">
+<img src="/img/posts/hannyangmanyo/한냥만요_플로우_그림.png" width="100%">
 </br>
 
 <h3>🎥 개발 결과</h3>
-<img src="../img/posts/hannyangmanyo/한냥만요_로그인.jpg">
-<img src="../img/posts/hannyangmanyo/한냥만요_메인_페이지.jpg">
-<img src="../img/posts/hannyangmanyo/한냥만요_고양이_도감.jpg">
+<img src="/img/posts/hannyangmanyo/한냥만요_로그인.jpg" width="30%">
+<img src="/img/posts/hannyangmanyo/한냥만요_메인_페이지.jpg" width="30%">
+<img src="/img/posts/hannyangmanyo/한냥만요_고양이_도감.jpg" width="30%">
 <p>
     결과물로 만들었던 기능들은 다음과 같다.
 </p>
-<img src="../img/posts/hannyangmanyo/한냥만요_기능표.png">
+<img src="/img/posts/hannyangmanyo/한냥만요_기능표.png" width="100%">
 <p>
     로그인 페이지는 firebase에 자체적으로 지원되는 API가 있었기에, 손쉽게 개발할 수 있었다.
     그러나 그 다음 주요한 기능들에서 하나 둘씩 난항을 겪으며, 각 기능들을 구현하는 데에 많은 시간을 뺏기고 말았다.
