@@ -1,5 +1,5 @@
 ---
-title: 지료 구조
+title: 자료 구조
 layout: default
 nav_order: 2
 has_children: true

@@ -8,6 +8,7 @@ has_children: true
 여러 알고리즘 개념 정리
 
 목표
+ - ad hoc
  - DFS & BFS
  - 벨먼-포드
  - 다익스트라
