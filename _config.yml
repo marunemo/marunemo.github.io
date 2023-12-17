@@ -6,3 +6,20 @@ url: https://marunemo.github.io
 
 aux_links:
   Template Repository: https://github.com/marunemo/marunemo.github.io
+
+callouts_level: quiet
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
