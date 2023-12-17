@@ -1,3 +1,3 @@
 - ✍️: create & update
-- 🪄: style
-- 🔧: fix
+- ✨: style
+- ⚙️: fix
