@@ -1,6 +1,6 @@
 ---
 title: 문제 풀이
-layout: default
+layout: home
 nav_order: 4
 has_children: true
 ---
