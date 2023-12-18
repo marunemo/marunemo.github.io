@@ -16,3 +16,6 @@ vendor/
 
 # for owner
 resource
+
+# vscode
+.vscode/
