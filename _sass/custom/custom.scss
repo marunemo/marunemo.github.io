@@ -11,10 +11,13 @@ code {
 
 // for solution tab
 .code-example p {
-  text-indent: 10pt;
+  text-indent: 0.75rem;
   font-size: 0.95em;
 }
 
+.code-example p img {
+  text-indent: 0;
+}
 
 // for callout
 p.note-title > p:first-child, blockquote.note-title > p:first-child {

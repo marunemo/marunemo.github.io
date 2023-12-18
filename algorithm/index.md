@@ -1,6 +1,6 @@
 ---
 title: 알고리즘
-layout: default
+layout: home
 nav_order: 3
 has_children: true
 ---
@@ -17,7 +17,7 @@ has_children: true
  - 위상 정렬
  - 투 포인터
  - 이분 탐색
- - 배낭 문제
+ - 배낭 문제(완료)
  - LIS
  - LCS
  - 비트마스킹
