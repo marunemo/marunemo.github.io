@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<hr class="mb-6" />
+
+{% if page.has_comment != false %}
+    <script src="https://utteranc.es/client.js"
+            repo="marunemo/marunemo.github.io"
+            issue-term="url"
+            label="💬 comment 🗨️"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+{% endif %}

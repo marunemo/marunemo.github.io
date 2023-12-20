@@ -1,6 +1,6 @@
 ---
 title: 배낭 문제
-layout: default
+layout: blog
 parent: 알고리즘
 ---
 
