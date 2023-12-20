@@ -86,7 +86,7 @@ float knapsack() {
 
 수식으로 나타내자면,
 {: .pl-3 .d-inline .v-align-middle }
-각 물건의 무게
+무게
 {: .d-inline .v-align-middle }
 ![w_i](https://wikimedia.org/api/rest_v1/media/math/render/svg/fe22f0329d3ecb2e1880d44d191aba0e5475db68)
 {: .d-inline .v-align-middle }
@@ -94,11 +94,15 @@ float knapsack() {
 {: .d-inline .v-align-middle }
 ![v_i](https://wikimedia.org/api/rest_v1/media/math/render/svg/7dffe5726650f6daac54829972a94f38eb8ec127)
 {: .d-inline .v-align-middle }
-에 대하여
+인 각 물건들을 담을 가방의 용량을
+{: .d-inline .v-align-middle }
+![W](https://wikimedia.org/api/rest_v1/media/math/render/svg/54a9c4c547f4d6111f81946cad242b18298d70b7)
+{: .d-inline .v-align-middle }
+라고 할 때, 각 물건들에 대한
 {: .d-inline .v-align-middle .mr-1 }
 ![x_range](https://wikimedia.org/api/rest_v1/media/math/render/svg/07dda71da2a630762c7b21b51ea54f86f422f951)
 {: .d-inline .v-align-middle }
-과
+와
 {: .d-inline .v-align-middle }
 ![w_range](https://wikimedia.org/api/rest_v1/media/math/render/svg/dd6e7c9bca4397980976ea6d19237500ce3b8176)
 {: .d-inline .v-align-middle }
