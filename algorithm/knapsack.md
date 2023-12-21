@@ -2,6 +2,7 @@
 title: 배낭 문제
 layout: blog
 parent: 알고리즘
+nav_order: 1
 ---
 
 # **배낭(knapsack) 문제**
