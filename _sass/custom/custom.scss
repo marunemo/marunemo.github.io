@@ -36,6 +36,7 @@ p.note-title > p:first-child, blockquote.note-title > p:first-child {
 .label-gold:not(g),
 .label-platinum:not(g) {
   color: $grey-lt-100;
+  font-weight: 700;
 }
 
 .label-bronze:not(g) {
@@ -51,5 +52,5 @@ p.note-title > p:first-child, blockquote.note-title > p:first-child {
 }
 
 .label-platinum:not(g) {
-  background-color: #27E2A4;
+  background-color: #16D193;
 }
