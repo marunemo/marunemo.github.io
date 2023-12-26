@@ -3,6 +3,7 @@ description: 뒤처지기 전에 뭐라도 하는 중
 theme: just-the-docs
 
 url: https://marunemo.github.io
+favicon_ico: "/assets/favicon.ico"
 
 aux_links:
   Template Repository: https://github.com/marunemo/marunemo.github.io
