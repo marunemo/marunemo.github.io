@@ -22,6 +22,11 @@ code {
   text-indent: 0;
 }
 
+.code-example ul,
+.code-example ol {
+  font-size: 0.95em;
+}
+
 // for callout
 p.note-title > p:first-child, blockquote.note-title > p:first-child {
   font-size: 1.125em;
