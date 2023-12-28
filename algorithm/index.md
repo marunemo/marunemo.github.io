@@ -1,11 +1,9 @@
 ---
 title: 알고리즘
-layout: home
+layout: parent
 nav_order: 3
 has_children: true
 ---
-
-여러 알고리즘 개념 정리
 
 목표
  - ad hoc
