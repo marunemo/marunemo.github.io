@@ -23,7 +23,7 @@ nav_order: 1
 간단하게 말하면, 내가 현재 가지고 있는 배낭에 최대로 담을 수 있는 무게가 정해져 있고 배낭에 넣을 짐들의 무게와 가치를 알고 있을 때,
 가치의 합이 최댓값이 되도록 짐을 고르는 방법을 찾는 문제이다.
 
-![sample.png](../assets/knapsack_0.png)
+![sample.png](../assets/algorithm/knapsack/sample_0.png)
 {: .mx-4 .mt-2 }
 
 배낭 문제는 물건을 나누어 담을 수 있는가와 나누어 담을 수 없는가에 따라 풀이 방식이 나뉘게 된다.
@@ -89,27 +89,27 @@ float knapsack() {
 {: .pl-3 .d-inline .v-align-middle }
 무게
 {: .d-inline .v-align-middle }
-![w_i](https://wikimedia.org/api/rest_v1/media/math/render/svg/fe22f0329d3ecb2e1880d44d191aba0e5475db68)
+![w_i](../assets/algorithm/knapsack/w_i.svg)
 {: .d-inline .v-align-middle }
 와 가치
 {: .d-inline .v-align-middle }
-![v_i](https://wikimedia.org/api/rest_v1/media/math/render/svg/7dffe5726650f6daac54829972a94f38eb8ec127)
+![v_i](../assets/algorithm/knapsack/v_i.svg)
 {: .d-inline .v-align-middle }
 인 각 물건들을 담을 가방의 용량을
 {: .d-inline .v-align-middle }
-![W](https://wikimedia.org/api/rest_v1/media/math/render/svg/54a9c4c547f4d6111f81946cad242b18298d70b7)
+![W](../assets/algorithm/knapsack/w.svg)
 {: .d-inline .v-align-middle }
 라고 할 때, 각 물건들에 대한
 {: .d-inline .v-align-middle .mr-1 }
-![x_range](https://wikimedia.org/api/rest_v1/media/math/render/svg/07dda71da2a630762c7b21b51ea54f86f422f951)
+![x_range](../assets/algorithm/knapsack/x_range.svg)
 {: .d-inline .v-align-middle }
 와
 {: .d-inline .v-align-middle }
-![w_range](https://wikimedia.org/api/rest_v1/media/math/render/svg/dd6e7c9bca4397980976ea6d19237500ce3b8176)
+![w_range](../assets/algorithm/knapsack/w_range.svg)
 {: .d-inline .v-align-middle }
 을 만족하는 집합들 중
 {: .d-inline .v-align-middle }
-![maximum](https://wikimedia.org/api/rest_v1/media/math/render/svg/85620037d368d2136fb3361702df6a489416931b)
+![maximum](../assets/algorithm/knapsack/maximum.svg)
 {: .d-inline .v-align-middle }
 가 최대가 되는 집합을 찾는 것이다.
 {: .d-inline .v-align-middle }
@@ -162,7 +162,7 @@ curr이 현재 담을 수 있는 용량이 아닌 이미 담긴 용량이라는�
 memo[index - 1][curr];
 ```
 {: .mb-0 }
-![example1.png](../assets/knapsack_1.png)
+![example1.png](../assets/algorithm/knapsack/sample_1.png)
 {: .mx-4 .mt-2 .mb-6 }
 그리고 우리는 이 가방에 물건 4라는 물건을 담으려고 한다.
 만약 curr이 물건 4의 무게보다 작다면, 가방의 최대 용량을 초과했기 때문에 안에 있는 물건에 관계없이 물건을 담을 수 없을 것이다.
@@ -172,14 +172,14 @@ memo[index - 1][curr];
 memo[index - 1][curr - weight[i]];
 ```
 {: .mb-0 }
-![example2.png](../assets/knapsack_2.png)
+![example2.png](../assets/algorithm/knapsack/sample_2.png)
 {: .mx-4 .mt-2 .mb-6 }
 그리고 여기에 물건 4를 넣었을 때, 그 값이 물건을 빼지 않았을 때의 값보다 큰 지 비교를 하고, 만약 물건 4를 대신 넣었을 값이 크다면 해당 값으로 대체한다.
 {: .mb-0 }
 ```cpp
 memo[index - 1][curr - weight[i]] + value[i];
 ```
-![example3.png](../assets/knapsack_3.png)
+![example3.png](../assets/algorithm/knapsack/sample_3.png)
 {: .mx-4 .mt-2 .mb-6 }
 물론, 공기나 물건을 다 빼고 물건 4를 넣었을 때, 그 값이 더 작다면 기존의 값을 유지한다.
 이 과정을 0에서 실제 최대 용량인 w까지 반복을 하고, n번째 물건까지 모두 확인한 뒤에 용량이 w일 때의 값이 배낭에 담을 수 있는 가치의 합의 최댓값이 된다.
