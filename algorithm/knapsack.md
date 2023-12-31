@@ -5,7 +5,7 @@ parent: 알고리즘
 nav_order: 1
 ---
 
-# **배낭(knapsack) 문제**
+# **배낭 문제(Knapsack Problem) **
 {: .no_toc .fs-9 }
 
 <br/>
