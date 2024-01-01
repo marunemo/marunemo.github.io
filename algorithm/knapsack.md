@@ -24,7 +24,7 @@ nav_order: 1
 가치의 합이 최댓값이 되도록 짐을 고르는 방법을 찾는 문제이다.
 
 ![sample.png](../assets/algorithm/knapsack/sample_0.png)
-{: .mx-4 .mt-2 }
+{: .image .mx-4 .mt-2 }
 
 배낭 문제는 물건을 나누어 담을 수 있는가와 나누어 담을 수 없는가에 따라 풀이 방식이 나뉘게 된다.
 이러한 문제 유형을 각각 [분할 가능 배낭 문제](#분할-가능-배낭-문제)와 [0-1 배낭 문제](#0-1-배낭-문제)이라고 부른다.
@@ -163,7 +163,7 @@ memo[index - 1][curr];
 ```
 {: .mb-0 }
 ![example1.png](../assets/algorithm/knapsack/sample_1.png)
-{: .mx-4 .mt-2 .mb-6 }
+{: .image .mx-4 .mt-2 .mb-6 }
 그리고 우리는 이 가방에 물건 4라는 물건을 담으려고 한다.
 만약 curr이 물건 4의 무게보다 작다면, 가방의 최대 용량을 초과했기 때문에 안에 있는 물건에 관계없이 물건을 담을 수 없을 것이다.
 만약 반대로 curr이 물건 4의 무게보다 크다면, 우리는 가방에 있는 공기를 비롯한 여러 물건들을 꺼내고 물건 4를 넣을 지 고민할 수 있다.
@@ -173,14 +173,14 @@ memo[index - 1][curr - weight[i]];
 ```
 {: .mb-0 }
 ![example2.png](../assets/algorithm/knapsack/sample_2.png)
-{: .mx-4 .mt-2 .mb-6 }
+{: .image .mx-4 .mt-2 .mb-6 }
 그리고 여기에 물건 4를 넣었을 때, 그 값이 물건을 빼지 않았을 때의 값보다 큰 지 비교를 하고, 만약 물건 4를 대신 넣었을 값이 크다면 해당 값으로 대체한다.
 {: .mb-0 }
 ```cpp
 memo[index - 1][curr - weight[i]] + value[i];
 ```
 ![example3.png](../assets/algorithm/knapsack/sample_3.png)
-{: .mx-4 .mt-2 .mb-6 }
+{: .image .mx-4 .mt-2 .mb-6 }
 물론, 공기나 물건을 다 빼고 물건 4를 넣었을 때, 그 값이 더 작다면 기존의 값을 유지한다.
 이 과정을 0에서 실제 최대 용량인 w까지 반복을 하고, n번째 물건까지 모두 확인한 뒤에 용량이 w일 때의 값이 배낭에 담을 수 있는 가치의 합의 최댓값이 된다.
 

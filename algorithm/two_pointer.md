@@ -26,7 +26,7 @@ nav_order: 2
 {: .mb-1 }
 
 ![sample](../assets/algorithm/two_pointer/s3.png)
-{: .mx-4 .mt-2 }
+{: .image .mx-4 .mt-2 }
 </div>
 
 ### 예제 코드
@@ -106,7 +106,7 @@ int main() {
 {: .mb-1 }
 
 ![procedure](../assets/algorithm/two_pointer/example.gif)
-{: .mx-4 .my-2 }
+{: .image .mx-4 .my-2 }
 
 음수는 왼쪽에 위치한 값이 오른쪽에 위치한 값보다 절댓값이 크므로 오른쪽으로 움직이고,
 양수는 오른쪽에 위치한 값이 왼쪽에 위치한 값보다 절댓값이 크므로 왼쪽으로 움직인다.
