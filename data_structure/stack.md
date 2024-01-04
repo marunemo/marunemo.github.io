@@ -25,36 +25,31 @@ nav_order: 1
 {: .fw-700 }
 
 ```cpp
-struct Node {
-    int value;
-    Node* front;
-    Node* back;
-    
-    Node(int value) {
-        this.value = value;
-    }
-}
+#define MAX 1000
 
+template <class T>
 struct Stack {
-    Node *top;
+    T buffer[MAX];
+    int index = 0;
 
     bool empty() {
-        return top == NULL;
+        return index == 0;
     }
 
-    void push(int value) {
-        Node item = Node(value);
-        item.front = top;
-        top = item;
+    int size() {
+        return index;
     }
 
-    int pop() {
-        if(empty())
+    void push(T value) {
+        if(index == MAX)
             return;
-        
-        int value = item.value;
-        top = item.front;
-        return value;
+        buffer[index++] = value;
+    }
+
+    T pop() {
+        if(empty())
+            return -1;
+        return buffer[--index];
     }
 };
 ```
