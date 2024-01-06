@@ -19,10 +19,14 @@ nav_order: 1
 {: .fw-700 }
 
 <div class="code-example" markdown="1">
+스택은 LIFO(Last In First Out) 형식을 따르는 자료구조이다.
 </div>
 
 ### 구현 코드
 {: .fw-700 }
+
+스택을 C++로 구현한 코드는 다음과 같다.
+{: .mb-1 }
 
 ```cpp
 #define MAX 1000
@@ -54,3 +58,9 @@ struct Stack {
 };
 ```
 {: .lh-0 .fw-700 .fs-4 }
+
+## 참고 사이트
+{: .fs-5 .fw-700 }
+
+* [https://www.geeksforgeeks.org/stack-data-structure/](https://www.geeksforgeeks.org/stack-data-structure/)
+* [https://www.programiz.com/dsa/stack#google_vignette](https://www.programiz.com/dsa/stack#google_vignette)
