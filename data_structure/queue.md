@@ -38,7 +38,46 @@ nav_order: 1
 {: .mb-1 }
 
 ```cpp
+#define MAX 1000
 
+template <class T>
+struct Queue {
+    T buffer[MAX];
+    int head = 0;
+    int tail = 0;
+
+    bool empty() {
+        return head == tail;
+    }
+
+    int size() {
+        return tail - head;
+    }
+
+    T front() {
+        if(empty())
+            return -1;
+        return buffer[head];
+    }
+
+    T rear() {
+        if(empty())
+            return -1;
+        return buffer[tail-1];
+    }
+
+    void enqueue(T value) {
+        if(tail == MAX)
+            return;
+        buffer[tail++] = value;
+    }
+
+    T dequeue() {
+        if(empty())
+            return -1;
+        return buffer[head++];        
+    }
+};
 ```
 {: .lh-0 .fw-700 .fs-4 }
 
@@ -50,7 +89,70 @@ C++로 구현한 코드는 다음과 같다.
 {: .mb-1 }
 
 ```cpp
+#define MAX 1000
 
+template <class T>
+struct Node {
+    T value;
+    Node<T>* next;
+};
+
+template <class T>
+struct Queue {
+    Node<T>* head = NULL;
+    Node<T>* tail = NULL;
+    int index = 0;
+
+    bool empty() {
+        return head == NULL;
+    }
+
+    int size() {
+        return index;
+    }
+
+    T front() {
+        if(empty())
+            return -1;
+        return head->value;
+    }
+
+    T rear() {
+        if(empty())
+            return -1;
+        return tail->value;
+    }
+
+    void enqueue(T value) {
+        if(index == MAX)
+            return;
+
+        Node<T> *node = new Node<T>;
+        node->value = value;
+        node->next = NULL;
+        
+        if(empty())
+            head = tail = node;
+        else {
+            tail->next = node;
+            tail = node;
+        }
+
+        index++;
+    }
+
+    T dequeue() {
+        if(empty())
+            return -1;
+        
+        T value = head->value;
+        Node<T>* next = head->next;
+        delete head;
+
+        head = next;
+        return value;
+    }
+};
 ```
 {: .lh-0 .fw-700 .fs-4 }
 </div>
@@ -69,6 +171,56 @@ C++로 구현한 코드는 다음과 같다.
 
 <div class="code-example" markdown="1">
 
+```cpp
+#define MAX 1000
+
+template <class T>
+struct Queue {
+    T buffer[MAX];
+    int head = 0;
+    int tail = 0;
+
+    bool empty() {
+        return head == tail;
+    }
+
+    int size() {
+        if(tail < head)
+            return tail + MAX - head;
+        return tail - head;
+    }
+
+    T front() {
+        if(empty())
+            return -1;
+        return buffer[head];
+    }
+
+    T rear() {
+        if(empty())
+            return -1;
+        if(tail == 0)
+            return buffer[MAX-1];
+        return buffer[tail-1];
+    }
+
+    void enqueue(T value) {
+        if((tail + 1) % MAX == head)
+            return;
+        buffer[tail] = value;
+        tail = (tail + 1) % MAX;
+    }
+
+    T dequeue() {
+        if(empty())
+            return -1;
+        T value = buffer[head];
+        head = (head + 1) % MAX;
+        return value;
+    }
+};
+```
+{: .lh-0 .fw-700 .fs-4 }
 </div>
 
 ## 덱(Deque)
