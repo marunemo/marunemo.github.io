@@ -149,6 +149,7 @@ struct Queue {
         Node<T>* next = head->next;
         delete head;
 
+        index--;
         head = next;
         return value;
     }
@@ -170,6 +171,16 @@ struct Queue {
 {: .fw-700 }
 
 <div class="code-example" markdown="1">
+**원형 큐**는 위의 큐를 구현하는 방식 중 배열을 기반으로 하는 큐의 문제점을 보완하기 위한 큐이다.
+배열을 기반으로 하는 큐는 스택과 달리 데이터의 입출력이 이루어지는 위치가 프론트와 리어로 각각 다르기 때문에,
+입출력을 반복하다보면 배열의 앞의 인덱스들이 사용되지 않은 채로 리어가 배열의 크기까지 도달하게 된다.
+이렇듯 배열의 사용되지 못하는 공간을 활용하기 위한 방안으로 구현할 수 있는 큐가 바로 원형 큐인 것이다.
+
+### 배열로 구현한 코드
+{: .fs-5 .fw-700 .mb-2 }
+
+원형 큐를 C++로 구현한 코드는 다음과 같다.
+{: .mb-1 }
 
 ```cpp
 #define MAX 1000
@@ -227,6 +238,122 @@ struct Queue {
 {: .fw-700 }
 
 <div class="code-example" markdown="1">
+**덱**은 큐와 스택의 특징을 섞어 프론트와 리어 모두에서 데이터를 입출력할 수 있도록 한 자료구조이다.
+
+### 링크드 리스트로 구현한 코드
+{: .fs-5 .fw-700 .mb-2 }
+
+덱을 링크드 리스트를 통해 c++로 구현한 코드는 다음과 같다.
+{: .mb-1 }
+
+```cpp
+#define MAX 1000
+
+template <class T>
+struct Node {
+    T value;
+    Node<T>* pre;
+    Node<T>* next;
+};
+
+template <class T>
+struct Deque {
+    Node<T>* head = NULL;
+    Node<T>* tail = NULL;
+    int index = 0;
+
+    bool empty() {
+        return index == 0;
+    }
+
+    int size() {
+        return index;
+    }
+
+    T front() {
+        if(empty())
+            return -1;
+        return head->value;
+    }
+
+    T rear() {
+        if(empty())
+            return -1;
+        return tail->value;
+    }
+
+    void push_front(T value) {
+        if(index == MAX)
+            return;
+
+        Node<T> *node = new Node<T>;
+        node->value = value;
+        node->pre = NULL;
+        node->next = NULL;
+        
+        if(empty())
+            head = tail = node;
+        else {
+            node->next = head;
+            head->pre = node;
+            head = node;
+        }
+
+        index++;
+    }
+
+    void push_back(T value) {
+        if(index == MAX)
+            return;
+
+        Node<T> *node = new Node<T>;
+        node->value = value;
+        node->pre = NULL;
+        node->next = NULL;
+        
+        if(empty())
+            head = tail = node;
+        else {
+            node->pre = tail;
+            tail->next = node;
+            tail = node;
+        }
+
+        index++;
+    }
+
+    T pop_front() {
+        if(empty())
+            return -1;
+        
+        T value = head->value;
+        Node<T>* next = head->next;
+        delete head;
+
+        index--;
+        head = next;
+        if(head)
+            head->pre = NULL;
+        return value;
+    }
+
+    T pop_back() {
+        if(empty())
+            return -1;
+        
+        T value = tail->value;
+        Node<T>* next = tail->pre;
+        delete tail;
+
+        index--;
+        tail = next;
+        if(tail)
+            tail->next = NULL;
+        return value;
+    }
+};
+```
+{: .lh-0 .fw-700 .fs-4 }
 
 </div>
 
@@ -234,10 +361,105 @@ struct Queue {
 {: .fw-700 }
 
 <div class="code-example" markdown="1">
+**우선순위 큐**은 데이터를 입력(인큐)할 때는 동일하지만,
+데이터를 출력(디큐)할 때에는 임의의 우선순위가 높은 원소부터 빼내는 자료 구조이다.
+[배열](https://www.geeksforgeeks.org/priority-queue-using-array-in-c/)이나
+[링크드 리스트](https://www.geeksforgeeks.org/priority-queue-using-linked-list/)를 통해 구현하는 것도 가능하지만,
+이번에는 [힙 트리](https://www.geeksforgeeks.org/priority-queue-using-binary-heap/)를 통해 구현해 보았다.
 
+### 이진 힙으로 구현한 코드
+{: .fs-5 .fw-700 .mb-2 }
+
+우선순위 큐를 이진 힙을 통해 c++로 구현한 코드는 다음과 같다.
+{: .mb-1 }
+
+```cpp
+#define MAX 1000
+
+template <class T>
+struct PriorityQueue {
+    T buffer[MAX];
+    int buffer_size = 0;
+
+    PriorityQueue() {
+        for(int i = 0; i < MAX; i++)
+            buffer[i] = -INF;
+    }
+
+    int _parent(int i) {
+        return (i - 1) / 2;
+    }
+
+    int _leftChild(int i) {
+        return (2 * i) + 1;
+    }
+
+    int _rightChild(int i) {
+        return (2 * i) + 2;
+    }
+
+    void push(int value) {
+        if(buffer_size == MAX)
+            return;
+        
+        int index = buffer_size++;
+        buffer[index] = value;
+        
+        // c++의 priority_queue에서 compare function의 대소 관계가 반대인 이유로 추측
+        while(index > 0 && buffer[_parent(index)] > buffer[index]) {
+            T tmp = buffer[_parent(index)];
+            buffer[_parent(index)] = buffer[index];
+            buffer[index] = tmp;
+            
+            index = _parent(index);
+        }
+    }
+
+    T pop() {
+        int value = buffer[0];
+        int index = 0;
+        int next;
+        while(_leftChild(index) < MAX) {
+            if(_rightChild(index) >= MAX)
+                next = _leftChild(index);
+            else if(buffer[_leftChild(index)] == -INF && buffer[_rightChild(index)] == -INF) {
+                buffer[index] = -INF;
+                break;
+            }
+            else if(buffer[_leftChild(index)] == -INF)
+                next = _rightChild(index);
+            else if(buffer[_rightChild(index)] == -INF)
+                next = _leftChild(index);
+            else if(buffer[_leftChild(index)] < buffer[_rightChild(index)])
+                next = _leftChild(index);
+            else
+                next = _rightChild(index);
+            buffer[index] = buffer[next];
+            index = next;
+            buffer[index] = -INF;
+        }
+        buffer_size--;
+        return value;
+    }
+
+    T top() {
+        return buffer[0];
+    }
+
+    int size() {
+        return buffer_size;
+    }
+
+    bool empty() {
+        return buffer_size == 0;
+    }
+};
+```
+{: .lh-0 .fw-700 .fs-4 }
 </div>
 
 ## 참고 사이트
 {: .fs-5 .fw-700 }
 
-* [스택 자료 구조에 관한 구현 및 관련 문제](https://www.geeksforgeeks.org/stack-data-structure/)
+* [큐 자료 구조에 관한 구현 및 관련 문제](https://www.geeksforgeeks.org/queue-data-structure/)
+* [우선순위 큐에 대한 설명 및 구현](https://www.geeksforgeeks.org/priority-queue-set-1-introduction/)
