@@ -2,7 +2,7 @@
 title: 큐
 layout: blog
 parent: 자료 구조
-nav_order: 1
+nav_order: 2
 ---
 
 # **큐(Queue)**
@@ -243,7 +243,7 @@ struct Queue {
 ### 링크드 리스트로 구현한 코드
 {: .fs-5 .fw-700 .mb-2 }
 
-덱을 링크드 리스트를 통해 c++로 구현한 코드는 다음과 같다.
+덱을 링크드 리스트를 통해 C++로 구현한 코드는 다음과 같다.
 {: .mb-1 }
 
 ```cpp
@@ -370,11 +370,12 @@ struct Deque {
 ### 이진 힙으로 구현한 코드
 {: .fs-5 .fw-700 .mb-2 }
 
-우선순위 큐를 이진 힙을 통해 c++로 구현한 코드는 다음과 같다.
+우선순위 큐를 이진 힙을 통해 C++로 구현한 코드는 다음과 같다.
 {: .mb-1 }
 
 ```cpp
 #define MAX 1000
+#define INF (~0U >> 2)
 
 template <class T>
 struct PriorityQueue {
@@ -416,6 +417,9 @@ struct PriorityQueue {
     }
 
     T pop() {
+        if(empty())
+            return -INF;
+
         int value = buffer[0];
         int index = 0;
         int next;
