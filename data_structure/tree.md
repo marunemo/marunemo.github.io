@@ -2,7 +2,7 @@
 title: 트리
 layout: blog
 parent: 자료 구조
-nav_order: 4
+nav_order: 5
 ---
 
 # **트리(Tree)**
