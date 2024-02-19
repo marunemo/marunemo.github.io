@@ -187,8 +187,10 @@ struct BST {
         rootNode->left = leftNode;
         leftNode->right = leftRightNode;
 
-        leftNode->height = max(getHeight(leftNode->left), getHeight(leftNode->right)) + 1;
-        rootNode->height = max(getHeight(rootNode->left), getHeight(rootNode->right)) + 1;
+        leftNode->height = max(getHeight(leftNode->left),
+                               getHeight(leftNode->right)) + 1;
+        rootNode->height = max(getHeight(rootNode->left),
+                               getHeight(rootNode->right)) + 1;
         return rootNode;
     }
 
@@ -199,8 +201,10 @@ struct BST {
         rootNode->right = rightNode;
         rightNode->left = rightLeftNode;
 
-        rightNode->height = max(getHeight(rightNode->left), getHeight(rightNode->right)) + 1;
-        rootNode->height = max(getHeight(rootNode->left), getHeight(rootNode->right)) + 1;
+        rightNode->height = max(getHeight(rightNode->left),
+                                getHeight(rightNode->right)) + 1;
+        rootNode->height = max(getHeight(rootNode->left),
+                                getHeight(rootNode->right)) + 1;
         return rootNode;
     }
 
@@ -293,7 +297,7 @@ AVL 트리의 가장 큰 특징은 회전(rotate)에 있는데, 이 회전을 �
 여기서 트리의 균형이란 임의의 한 노드의 두 자식 노드에 대한 서브 트리의 높이 차가 1 이내인 상태를 의미한다(노드가 없다면 높이를 0으로 간주한다).
 AVL 트리는 노드가 삽입 및 삭제될 때마다 수정되는 노드의 부모 노드들의 균형을 확인하고,
 균형이 맞지 않을 경우 자동으로 회전하게 되므로, 일반적으로 균형이 맞지 않는 경우는 두 높이 차가 2인 경우이다.
-{: .mb-1 }
+{: .mb-0 }
 
 회전에는 두 가지 종류가 있는데, left rotate와 right rotate이다.
 이를 위해서는 이진 탐색 트리의 특징을 다시 한 번 생각해봐야 한다.
@@ -301,7 +305,7 @@ AVL 트리는 노드가 삽입 및 삭제될 때마다 수정되는 노드의 �
 왼쪽 자식 노드의 오른쪽 자식 노드에 위치한 모든 자식 노드들의 값들은 왼쪽 자식 노드의 값보다 크고 현재 노드의 값보다 작은 값이어야 한다.
 이는 다시 생각해보면, 왼쪽 자식 노드를 루트 노드라고 한다면 해당 값들은 현재 노드의 왼쪽에 위치할 수도 있다는 것이다.
 이러한 원리를 이용하여 회전할 때 자식 노드들의 위치를 변경할 수 있다.
-{: .mb-1 }
+{: .my-0 }
 
 먼저, right rotate를 살펴보자.
 현재 노드를 root, 왼쪽 자식 노드를 left, 왼쪽 자식 노드의 오른쪽 자식 노드를 left-right라고 해보자.
@@ -312,12 +316,12 @@ right rotate는 왼쪽 자식 노드와 현재 노드를 오른쪽으로 회전�
 결과적으로 root의 왼쪽 자식 노드는 left에서 left-right로,
 left의 오른쪽 자식 노드는 left-right에서 root로만 바뀌면 된다.
 높이가 변하는 노드는 root와 left 뿐이므로, 두 노드의 높이만 갱신해주면 된다(하위 노드부터 상위 노드로 갱신한다).
-{: .mb-1 }
+{: .my-0 }
 
 left rotate의 경우에는 왼쪽 자식 노드와 왼쪽 자식 노드의 오른쪽 자식 노드만 좌우 대칭으로 해주면 된다.
 즉, 왼쪽 자식 노드를 오른쪽 자식 노드로, 왼쪽 자식 노드의 오른쪽 자식 노드를 오른쪽 자식 노드의 왼쪽 자식 노드에 대해
 위 과정을 수행해주면 left rotate가 된다.
-{: .mb-1 }
+{: .my-0 }
 
 가장 중요한 것은 위의 회전을 언제 사용하느냐는 것이다.
 앞서 이야기했듯이, 트리의 균형을 매번 확인하기 때문에, 회전을 사용하는 시기는 트리의 높이 차가 2인 경우가 일반적일 것이다.
@@ -329,12 +333,13 @@ rotate를 한 뒤에도 해당 노드의 높이가 변하지 않기 때문에 �
 우측 서브 트리의 높이가 3이 될 것이다.
 떄문에, 왼쪽 자식 노드에 대해 left rotate를 실행하여 왼쪽의 높이가 더 크게 설정하고,
 현재 노드에서 right rotate를 실행하는 것으로 균형을 맞추게 된다.
-{: .mb-1 }
+{: .my-0 }
 
 이는 삭제 시에도 마찬가지로, 회전 반대 방향에 있는 노드들이 한 방향으로 균형이 큰 구조를 만들어주어야 한다.
 즉, right rotate 시에는 왼쪽 자식 노드의 왼쪽 자식 노드가 왼쪽 자식 노드의 오른쪽 자식 노드의 높이보다 커야하고,
 left rotate 시에는 오른쪽 자식 노드의 오른쪽 자식 노드가 오른쪽 자식 노드의 왼쪽 자식 노드의 높이보다 커야한다.
 만약, 자식 노드의 높이가 맞지 않을 경우에는 rotate로 높이를 바꿔주어야 한다.
+{: .mt-1 }
 </div>
 
 ### 레드-블랙 트리(Red-Black Tree)
@@ -353,11 +358,12 @@ left rotate 시에는 오른쪽 자식 노드의 오른쪽 자식 노드가 오�
     1. 레드 노드의 부모가 레드이면, 위 조건에 위배되므로 레드 노드의 부모는 블랙이다.
     2. 결과적으로, 레드 노드는 연속으로 나타날 수 없다.
 5. 루트 노드에서 임의의 리프 노드까지의 가장 간단한 경로 내에 있는 블랙 노드의 수는 모든 리프 노드에 대해 항상 같아야 한다.
-{: .mb-1 }
+{: .my-0 }
 
 이러한 복잡한 조건이 주어진 대신,
 데이터의 삽입 및 삭제, 탐색에서 최악의 경우에도 `O(log₂N)`의 시간복잡도를 보장한다(worst-case guarantees).
 때문에, 파이썬에서 딕셔너리(dict)라고도 불리는 연관 집합이나 집합(set) 외에도 다양한 자료 구조들의 기반이 되는 자료 구조이다.
+{: .mt-1 }
 
 #### 구현 코드
 {: .fs-5 .fw-700 .mb-2 }
@@ -365,7 +371,6 @@ left rotate 시에는 오른쪽 자식 노드의 오른쪽 자식 노드가 오�
 레드-블랙 트리를 C++로 구현한 코드는 다음과 같다.
 구현의 용이성을 위해 모든 리프 노드가 값이 없는(NIL) 블랙 노드를 자식 노드를 가지고 있는 것으로 가정한다(3번 조건 완화).
 {: .mb-1 }
-https://www.programiz.com/dsa/red-black-tree
 
 ```cpp
 template <class T>
